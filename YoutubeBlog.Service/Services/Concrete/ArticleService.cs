@@ -77,15 +77,19 @@ namespace YoutubeBlog.Service.Services.Concrete
 
             if (articleUpdateDto.Photo != null)
             {
-                imageHelper.Delete(article.Image.FileName);
+                if(article.Image != null)
+                    imageHelper.Delete(article.Image.FileName);
                 var imageUpload = await imageHelper.Upload(articleUpdateDto.Title, articleUpdateDto.Photo, ImageType.Post);
                 Image image = new(imageUpload.FullName, articleUpdateDto.Photo.ContentType, userEmail);
                 await UnitOfWork.GetRepository<Image>().AddAsync(image);
                 article.ImageId = image.Id;
             }
-
+            //burda map işlemi yapmıştım fakat imageyi null olarak değiştirdiği için kod çalışmıyordu.
+            //mapper.Map<ArticleUpdateDto,Article>(articleUpdateDto,article);
             string articleTitleBeforeUpdate = article.Title;
-            mapper.Map<ArticleUpdateDto, Article>(articleUpdateDto, article);
+            article.Title = articleUpdateDto.Title;
+            article.Content = articleUpdateDto.Content;
+            article.CategoryId = articleUpdateDto.CategoryId;
             article.ModifiedDate = DateTime.Now;
             article.ModifiedBy = userEmail;
             await UnitOfWork.GetRepository<Article>().UpdateAsync(article);

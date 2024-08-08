@@ -16,9 +16,10 @@ namespace YoutubeBlog.Entity.Entities
         
         
         }
-        public Category(string name)
+        public Category(string name,string createdBy)
         {
             Name = name;
+            CreatedBy = createdBy;
         
         }
 
