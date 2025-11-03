@@ -8,11 +8,14 @@
 
   <ItemGroup>
     <Content Remove="Areas\Admin\Views\Article\Update.cshtml" />
+    <Content Remove="wwwroot\js\categoryAdd.js" />
     <Content Remove="wwwroot\js\categoryIndex.js" />
+    <Content Remove="wwwroot\js\userIndex - Copy.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Article\Update.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\categoryAdd.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +45,8 @@
 
   <ItemGroup>
     <None Include="Areas\Admin\Views\Article\Update.cshtml" />
+    <None Include="wwwroot\js\userIndex - Copy.js" />
+    <None Include="wwwroot\js\categoryAdd.js" />
     <None Include="wwwroot\js\categoryIndex.js" />
     <None Include="wwwroot\js\articleIndex.js" />
     <None Include="wwwroot\js\site.js" />
